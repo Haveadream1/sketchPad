@@ -1,0 +1,82 @@
+:root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inter;
+    background-color: #E4EFF9;
+}
+h1 {
+ text-align: center;
+}
+.align-section {
+    display: flex;
+    justify-content: center;
+}
+.grid-container {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    display: flex; 
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.grid-child {
+    background-color: lightcoral;
+    height: 100px;
+    flex-basis: 100px;
+}
+.input-color[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 32px;
+	height: 32px;
+}
+.input-color[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+.input-color[type="color"]::-webkit-color-swatch {
+	border: none;
+}
+.input-button {
+    -webkit-appearance: none; /*Override all past css*/
+    background-color: #d3d3d3;
+    width: 120px;
+    border-radius: 15px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    opacity: 0.7;
+    transition: opacity 0.35s;
+    display: flex;
+    justify-content: center;
+}
+.input-button:hover {
+    opacity: 1;
+}
+.degraded-button,
+.rainbow-button,
+.eraser-button,
+.clear-button {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: white;
+}
+.style-button {
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.style-input {
+    display: grid;
+    justify-content: center;
+}
+.text-size {
+    text-align: center;
+}
+.rainbow-button:active,
+.eraser-button:active,
+.clear-button:active{
+    opacity: 80%;
+}
