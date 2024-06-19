@@ -1,13 +1,15 @@
 let getValueRange = document.querySelector('.size-input').value;
-let gridChild = document.querySelectorAll('.grid-child');
-let gridContainer = document.querySelector('.grid-section');
 let getValueColor = document.querySelector('.color-input').value;
+
+let gridChild = document.querySelectorAll('.grid-child');
+let gridSection = document.querySelector('.grid-section'); /*gridContainer*/
+
 let x;
 let alpha = 0;
 
 console.log('Select first the size of the grid!');
 
-const inputButton = document.querySelector('.size-input');
+const sizeButton = document.querySelector('.size-input'); /*inputButton*/
 function changeSize() {
   restart();
   getValueRange = document.querySelector('.size-input').value;
@@ -17,7 +19,7 @@ function changeSize() {
   clearFunction();
   return getValueRange;
 }
-inputButton.addEventListener('click', changeSize);
+sizeButton.addEventListener('click', changeSize);
 
 function createDiv() {
   numberGrid = getValueRange * getValueRange;
@@ -29,7 +31,7 @@ function createDiv() {
     gridChild.style.flexBasis = size + 'px';
     gridChild.style.height = size + 'px';
     gridChild.addEventListener('mouseover', color);
-    gridContainer.appendChild(gridChild);
+    gridSection.appendChild(gridChild);
   };
 } 
 
