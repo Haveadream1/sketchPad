@@ -7,7 +7,6 @@ let gridSection = document.querySelector('.grid-section');
 let colorCode;
 let alpha = 0;
 
-console.log('Select first the size of the grid!');
 
 const sizeButton = document.querySelector('.size-input');
 function changeSize() {
@@ -26,6 +25,13 @@ function changeSize() {
   return getValueRange;
 }
 sizeButton.addEventListener('click', changeSize);
+
+document.addEventListener("DOMContentLoaded", () => {
+  /*
+  Function that run online on the onload, with base value 32
+  */
+  changeSize()
+})
 
 function createCell() {
   /*
