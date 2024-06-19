@@ -2,54 +2,72 @@ let getValueRange = document.querySelector('.size-input').value;
 let getValueColor = document.querySelector('.color-input').value;
 
 let gridChild = document.querySelectorAll('.grid-child');
-let gridSection = document.querySelector('.grid-section'); /*gridContainer*/
+let gridSection = document.querySelector('.grid-section');
 
-let x;
+let colorCode;
 let alpha = 0;
 
 console.log('Select first the size of the grid!');
 
-const sizeButton = document.querySelector('.size-input'); /*inputButton*/
+const sizeButton = document.querySelector('.size-input');
 function changeSize() {
+  /*
+  Main function
+  */
   restart();
+
   getValueRange = document.querySelector('.size-input').value;
   alpha = 0;
-  createDiv();
+
+  createCell();
   displayProportion();
   clearFunction();
+
   return getValueRange;
 }
 sizeButton.addEventListener('click', changeSize);
 
-function createDiv() {
-  numberGrid = getValueRange * getValueRange;
-  console.log(`Number of grid : ${numberGrid}`);
-  for(let i = 0; i < numberGrid; i++) {
-    gridChild = document.createElement('div');
-    let size = 400 / getValueRange; 
+function createCell() {
+  /*
+  Create the cell of the grid, give size and append to the grid
+  */
+  numberCell = getValueRange * getValueRange;
+  console.log(`Number of cell : ${numberCell}`);
+
+  for(let i = 0; i < numberCell; i++) {
+    cell = document.createElement('div');
+    gridSize = 400;
+
+    let size = gridSize / getValueRange; 
     console.log(`Size of the cell : ${size}`);
-    gridChild.style.flexBasis = size + 'px';
-    gridChild.style.height = size + 'px';
-    gridChild.addEventListener('mouseover', color);
-    gridSection.appendChild(gridChild);
+
+    cell.style.flexBasis = size + 'px'; /* Width of the cell */
+    cell.style.height = size + 'px';
+
+    cell.addEventListener('mouseover', color);
+    gridSection.appendChild(cell);
   };
 } 
 
 function choiceColor() {
-  if(x === 1 ) {
-    getValueColor = 'white';
-  } else if(x === 2) {
-    getValueColor = rainbowColor(array);
-  } else if(x === 3) {
+  /*
+  Choice color depending on the button pressed
+  */
+
+  if(colorCode === 1 ) {
+    getValueColor = 'white'; /// Eraser color
+  } else if(colorCode === 2) {
+    getValueColor = rainbowFunction(array);
+  } else if(colorCode === 3) {
     getValueColor = document.querySelector('.color-input').value;
-  } else if(x === 4) {
+  } else if(colorCode === 4) { /// Fade color from transparent to solid
     if(alpha < 0.99) {
       alpha += 0.1;
     } else {
       alpha = 0;
       alpha += 0.1;
     }
-    getValueColor = degradedFunction();
+    getValueColor = fadeFunction();
   }
 }
 
@@ -59,60 +77,72 @@ function color(e) {
 }
 
 const eraserButton = document.querySelector('.eraser-button');
-function eraserFunction() {
-  x = 1;
+function eraseFunction() {
+  colorCode = 1;
 }
-eraserButton.addEventListener('click', eraserFunction);
-
-function rainbowColor(array) {
-  x = 2;
-  const randomIndex = Math.floor(Math.random() * array.length);
-  const choice = array[randomIndex];
-  return choice;
-}
+eraserButton.addEventListener('click', eraseFunction);
 
 const array = ['red','orange','yellow','green','blue','indigo','violet'];
 const rainbowButton = document.querySelector('.rainbow-button');
-rainbowButton.addEventListener('click', rainbowColor);
+function rainbowFunction(array) {
+  /*
+  Choose a random color from the array 
+  */
+  colorCode = 2;
+
+  const randomIndex = Math.floor(Math.random() * array.length);
+  const choice = array[randomIndex];
+
+  return choice;
+}
+rainbowButton.addEventListener('click', rainbowFunction);
 
 const colorInput = document.querySelector('.color-input');
 function colorPicker() {
-  x = 3;
+  colorCode = 3;
 } 
 colorInput.addEventListener('click', colorPicker);
 
-const degradedButton = document.querySelector('.degraded-button');
-function degradedFunction() {
-  x = 4;
-  let red = 0;
-  let green = 0;
-  let blue = 0;
-  let rgbaValue = `(${red}, ${green}, ${blue}, ${alpha})`;
-  getValueColor = (`rgba${rgbaValue}`);
+const fadeButton = document.querySelector('.fade-button');
+function fadeFunction() {
+  /*
+  Create a rbga value with only the transparency modifiable
+  */
+  colorCode = 4;
+
+  let red, green, blue;
+  let rgbaValue = `(${red = 0}, ${green = 0}, ${blue = 0}, ${alpha})`;
+  getValueColor = `rgba${rgbaValue}`; /// Convert to a string
+
   return getValueColor;
 }
-degradedButton.addEventListener('click', degradedFunction);
+fadeButton.addEventListener('click', fadeFunction);
 
-let clearButton = document.querySelector('.clear-button');
+const clearButton = document.querySelector('.clear-button');
 function clearFunction() {
-  alpha = 0;
-  whiteDiv = document.querySelectorAll('div');
-  whiteDiv.forEach((item) => {
-    item.style.backgroundColor = 'white';
+  /*
+  Select all the cell to give them a white color 
+  */
+  gridCell = document.querySelectorAll('div');
+  gridCell.forEach((cell) => {
+    cell.style.backgroundColor = 'white';
   });
 }
 clearButton.addEventListener('click', clearFunction);
 
 function restart() {
-  removeDiv = document.querySelectorAll('div');
-  removeDiv.forEach((item) => {
-    item.remove();
+  /*
+  Clean the grid of all cells
+  */
+  removeCell = document.querySelectorAll('div');
+  removeCell.forEach((cell) => {
+    cell.remove();
   });
 }
 
-const textSize = document.querySelector('.text-size');
+const sizeText = document.querySelector('.size-text');
 function displayProportion() {
-  textSize.textContent = `${getValueRange} x ${getValueRange}`;
+  sizeText.textContent = `${getValueRange} x ${getValueRange}`;
 }
 
 /*  Need a container with grid inside
