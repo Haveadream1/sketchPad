@@ -1,16 +1,16 @@
-let getValueRange = document.querySelector('.input-button').value;
+let getValueRange = document.querySelector('.size-input').value;
 let gridChild = document.querySelectorAll('.grid-child');
-let gridContainer = document.querySelector('.grid-container');
-let getValueColor = document.querySelector('.input-color').value;
+let gridContainer = document.querySelector('.grid-section');
+let getValueColor = document.querySelector('.color-input').value;
 let x;
 let alpha = 0;
 
 console.log('Select first the size of the grid!');
 
-const inputButton = document.querySelector('.input-button');
+const inputButton = document.querySelector('.size-input');
 function changeSize() {
   restart();
-  getValueRange = document.querySelector('.input-button').value;
+  getValueRange = document.querySelector('.size-input').value;
   alpha = 0;
   createDiv();
   displayProportion();
@@ -39,7 +39,7 @@ function choiceColor() {
   } else if(x === 2) {
     getValueColor = rainbowColor(array);
   } else if(x === 3) {
-    getValueColor = document.querySelector('.input-color').value;
+    getValueColor = document.querySelector('.color-input').value;
   } else if(x === 4) {
     if(alpha < 0.99) {
       alpha += 0.1;
@@ -68,11 +68,12 @@ function rainbowColor(array) {
   const choice = array[randomIndex];
   return choice;
 }
+
 const array = ['red','orange','yellow','green','blue','indigo','violet'];
 const rainbowButton = document.querySelector('.rainbow-button');
 rainbowButton.addEventListener('click', rainbowColor);
 
-const colorInput = document.querySelector('.input-color');
+const colorInput = document.querySelector('.color-input');
 function colorPicker() {
   x = 3;
 } 

@@ -12,7 +12,7 @@ h1 {
     display: flex;
     justify-content: center;
 }
-.grid-container {
+.grid-section {
     width: 400px;
     height: 400px;
     background-color: white;
@@ -25,19 +25,19 @@ h1 {
     height: 100px;
     flex-basis: 100px;
 }
-.input-color[type="color"] {
+.color-input[type="color"] {
 	-webkit-appearance: none;
 	border: none;
 	width: 32px;
 	height: 32px;
 }
-.input-color[type="color"]::-webkit-color-swatch-wrapper {
+.color-input[type="color"]::-webkit-color-swatch-wrapper {
 	padding: 0;
 }
-.input-color[type="color"]::-webkit-color-swatch {
+.color-input[type="color"]::-webkit-color-swatch {
 	border: none;
 }
-.input-button {
+.size-input {
     -webkit-appearance: none; /*Override all past css*/
     background-color: #d3d3d3;
     width: 120px;
@@ -48,7 +48,7 @@ h1 {
     display: flex;
     justify-content: center;
 }
-.input-button:hover {
+.size-input:hover {
     opacity: 1;
 }
 .degraded-button,
@@ -61,18 +61,18 @@ h1 {
     font-size: 14px;
     background-color: white;
 }
-.style-button {
+.button-section {
     width: 500px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 25px;
 }
-.style-input {
+footer {
     display: grid;
     justify-content: center;
 }
-.text-size {
+.size-text {
     text-align: center;
 }
 .rainbow-button:active,
