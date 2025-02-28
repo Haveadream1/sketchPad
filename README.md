@@ -12,3 +12,4 @@ The main goal of this project is to practice DOM manipulation and improve the co
 [Sketch Pad](https://haveadream1.github.io/sketchPad/)
 
 ## TODO
+* Issue with fade button
